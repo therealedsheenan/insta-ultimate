@@ -1,11 +1,18 @@
-u1 = User.new
-u1.email = 'user1@email.com'
-u1.password = 'user1password'
-u1.password_confirmation = 'user1password'
-u1.save
 
-u2 = User.new
-u2.email = 'user2@email.com'
-u2.password = 'user2password'
-u2.password_confirmation = 'user2password'
-u2.save
+require 'ffaker'
+
+User.destroy_all
+
+User.create!({
+  name: 'User1',
+  email: 'user1@mail.com',
+  password: 'user1password',
+  password_confirmation: 'user1password'
+})
+
+5.times do
+  Post.create!(
+    title: FFaker::Lorem.sentence,
+    body: FFaker::Lorem.paragraphs.join(' ')
+  )
+end
