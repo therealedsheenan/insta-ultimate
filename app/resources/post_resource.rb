@@ -1,4 +1,4 @@
 class PostResource < JSONAPI::Resource
   immutable
-  attributes :title, :body
+  attributes :title, :body, :user_id
 end
